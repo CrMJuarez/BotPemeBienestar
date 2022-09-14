@@ -50,6 +50,7 @@ namespace BL
         public static void ExtraerDatos()
 
         {
+            //Este codigo se utiliza para mantener la sesion del portal dinamico
 
             //HttpWebRequest http = WebRequest.Create("https://portal.gsi.com.mx:8443/portal_desa/MonitorServicios.do") as HttpWebRequest;
             //http.KeepAlive = true;
@@ -69,41 +70,34 @@ namespace BL
             //http.CookieContainer = new CookieContainer();
             //http.CookieContainer.Add(httpResponse.Cookies);
             //HttpWebResponse httpResponse2 = http.GetResponse() as HttpWebResponse;
-            //private List<string> ParseHtml(string html)
-            //List<string> ParseHtml = new List<string>();
-
-            //List<string> datoshtml = new List<string>();
-            //using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnection()))
+            
+            //Codigo para instanciar el Ml donde estan todos mis atributos
             ML.DatosPortal datosPortal = new ML.DatosPortal();
+            //Codigo para hacer la conexion a la base de datos con SQL.Client y a su vez se instancia la clase DL
             using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnection()))
             {
+                //se crea una variable de tipo List para guardar los datos del documento html
                 List<string> datosextract = new List<string>();
+
+                //se instancia la clase html 
                 HtmlWeb web = new HtmlWeb();
+
+                //se utiliza para poder cargar el documento html de la pagina web y guardarlo en la variable documento
                 HtmlDocument documento = web.Load("https://datosprueba01.000webhostapp.com/DatosPreba02/Datos.html");
 
+                //Codigo para extraer los datos de los nodos del documento html es decir solo los datos que necesitamos
+                                                               //se separa por etiqueta, clase, nombre de clase
                 var datos = documento.DocumentNode.SelectNodes("//span[not(contains(@class, 'styleTableRow'))]");
-                //var programmerLinks = htmlDoc.DocumentNode.SelectNodes("//li[not(contains(@class, 'tocsection'))]")
                 foreach (var inf in datos)
                 {
 
                     datosextract.Add(inf.InnerText);
-                    //if (inf.FirstChild.Attributes.Count > 0) datosextract.Add(inf.FirstChild.Attributes[0].Value);
-                    string[] caracter = { "''"};
-                    var split = String.Join("''",datosextract.ToArray());
-                    string[] text = split.Split(caracter, System.StringSplitOptions.RemoveEmptyEntries);
-                    System.Console.WriteLine($"{text.Length} substrings in text:");
-                    //string [] caracter = { "<span>", "</span>","</td>","<td align",
-                    //    "=","<div>","</div>","<input>","</input>","<input type","</a>","center",
-                    //    ">","<div style","<a href"};
-                    //var split = String.Join("<span>", datos.ToArray());
-                    //string[] text = split.Split(caracter, System.StringSplitOptions.RemoveEmptyEntries);
-                    //System.Console.WriteLine($"{text.Length} substrings in text:");
-
-                    //int.Parse(Console.ReadLine());
+                    Console.WriteLine(datosextract);
+                      
                 }
 
 
-                // var split = String.Join(",", datosextract.ToArray());
+                //Codigo para llamar el Stored procedure para guardar la informacion en la base de datos
                 string query = "DatosAdd";
 
                 SqlCommand cmd = new SqlCommand();
