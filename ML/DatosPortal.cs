@@ -8,14 +8,14 @@ namespace ML
 {
     public class DatosPortal
     {
-        public int IdFolioDeServicio { get; set; }
+        public string IdFolioDeServicio { get; set; }
         public string Prioridad { get; set; }
         public string TipoServicio { get; set; }
         public string SucursalConsignatario { get; set; }
         public string FechaCaptura { get; set; }
         public string FechaRealizarServicio { get; set; }
         public string OrdenServicio { get; set; }
-        public string Importe { get; set; }
+        public decimal Importe { get; set; }
         public string Divisa { get; set; }
         public string Ter { get; set; }
         public string HoraEnvio { get; set; }

@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using ScrapySharp.Extensions;
 using System.Data.SqlClient;
 
 
