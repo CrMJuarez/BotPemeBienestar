@@ -93,7 +93,7 @@ namespace BL
 
                     datosextract.Add(inf.InnerText);
                     Console.WriteLine(datosextract);
-                      
+                        
                 }
 
 
