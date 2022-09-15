@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -42,6 +49,7 @@
       <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -65,10 +73,60 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="Dato.cs">
+      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatosPortal.cs">
+      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatosPrueba.cs">
+      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraerDatosHidrosina.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExtraerDatosHidrosina.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraerDatosHidrosina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraerDatosHidrosina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllDatos_Result.cs">
+      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="ExtraerDatosHidrosina.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExtraerDatosHidrosina.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="ExtraerDatosHidrosina.edmx.diagram">
+      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExtraerDatosHidrosina.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExtraerDatosHidrosina.Context.cs</LastGenOutput>
+      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
+    </Content>
+    <Content Include="ExtraerDatosHidrosina.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
+      <LastGenOutput>ExtraerDatosHidrosina.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
