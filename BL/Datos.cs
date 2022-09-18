@@ -14,40 +14,9 @@ namespace BL
     public class Datos
     {
         public static void ExtraerDatos()
-        //public static HttpWebResponse HttpPost(String url, String referer, String userAgent, ref CookieCollection cookies, String postData, out WebHeaderCollection headers, WebProxy proxy)
-        //{
-        //    try
-        //    {
-        //        HttpWebRequest http = WebRequest.Create(url) as HttpWebRequest;
-        //        http.Proxy = proxy;
-        //        http.AllowAutoRedirect = true;
-        //        http.Method = "POST";
-        //        http.ContentType = "application/x-www-form-urlencoded";
-        //        http.UserAgent = userAgent;
-        //        http.CookieContainer = new CookieContainer();
-        //        http.CookieContainer.Add(cookies);
-        //        http.Referer = referer;
-        //        byte[] dataBytes = UTF8Encoding.UTF8.GetBytes(postData);
-        //        http.ContentLength = dataBytes.Length;
-        //        using (Stream postStream = http.GetRequestStream())
-        //        {
-        //            postStream.Write(dataBytes, 0, dataBytes.Length);
-        //        }
-        //        HttpWebResponse httpResponse = http.GetResponse() as HttpWebResponse;
-        //        headers = http.Headers;
-        //        cookies.Add(httpResponse.Cookies);
-
-        //        return httpResponse;
-        //    }
-        //    catch { }
-        //    headers = null;
-
-        //    return null;
-        //}
-
 
         {
-           //ML.Result result = new ML.Result();
+            //ML.Result result = new ML.Result();
 
             //Este codigo se utiliza para mantener la sesion del portal dinamico
             //IWebDriver driver = new ChromeDriver(Environment.CurrentDirectory); //Start a new instance of chrome
@@ -84,6 +53,96 @@ namespace BL
             ////Codigo para hacer la conexion a la base de datos con SQL.Client y a su vez se instancia la clase DL
             //using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnection()))
             ////Codigo para hacer la conexion a la base de datos con entity y a su vez se instancia la clase DL
+
+            WebClient webClient = new WebClient();
+            string page = webClient.DownloadString("https://datosprueba01.000webhostapp.com/DatosPreba02/Datos.html");
+
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(page);
+
+
+
+            var myTable = doc.DocumentNode
+                 .Descendants("div")
+                 .Where(t => t.Attributes["id"].Value == "tablaJson")
+                 .FirstOrDefault();
+
+
+
+            foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table[1]"))
+            {
+                ///This is the table.    
+                foreach (HtmlNode row in table.SelectNodes("//div"))
+                {
+                    ///This is the row.
+                    foreach (HtmlNode cell in row.SelectNodes("//tr"))
+                    { //10
+
+                        //split
+
+                        //var x = row.SelectNodes("//td");
+
+                        //ML.DatosPortal datos = new ML.DatosPortal();
+                        //datos.IdFolioDeServicio = x[1];
+
+                        //if( ) getbyid 
+                        //                true 
+                        //    //update
+                        //    else
+                        //add
+                            //BL.Datos.ExtraerDatos.add(datos);
+
+                        //foreach (HtmlNode  column in row.SelectNodes("//td"))
+                        //{
+
+                        //    ///This the cell.
+                        //}
+                        /////This the cell.
+                    }
+                }
+            }
+
+
+            //WebClient webClient = new WebClient();
+            //string page = webClient.DownloadString("https://datosprueba01.000webhostapp.com/DatosPreba02/Datos.html");
+
+            //HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            //doc.LoadHtml(page);
+
+            //List<List<string>> table = doc.DocumentNode.SelectSingleNode("//tr[@class='styleTableRow']")
+            //            .Descendants("span")
+            //            .Skip(1)
+            //            .Where(span => span.Elements("td").Count() > 1)
+            //            .Select(td => td.Elements("td").Select(span => span.InnerText.Trim()).ToList()).ToList();
+
+
+            //foreach (var inf in table)
+            //{
+
+
+            //    //var NodoAnchor = Nodo.CssSelect("a").First();
+            //    //var oTitle = new titles();
+            //    //oTitle.title = NodoAnchor.InnerHtml;
+            //    //db.titles.Add(oTitle);
+            //    //  var oDato = new DL.DatosPortal();
+            //    //oDato.IdFolioDeServicio = inf.InnerText;
+
+
+
+
+            //    //context.DatosPortals.Add(oDato);
+            //    table.Add(inf);
+            //    Console.WriteLine(inf);
+            //    //Console.WriteLine(datosextract.ToString());
+
+            //       }
+
+
+
+
+
+
+
             using (DL.ExtraerDatosHidrosinaEntities context = new DL.ExtraerDatosHidrosinaEntities())
             {
                 //se crea una variable de tipo List para guardar los datos del documento html
@@ -96,8 +155,8 @@ namespace BL
                 HtmlDocument documento = web.Load("https://datosprueba01.000webhostapp.com/DatosPreba02/Datos.html");
                 //Codigo para extraer los datos de los nodos del documento html es decir solo los datos que necesitamos
                 //se separa por etiqueta, clase, nombre de clase
-                var datos = documento.DocumentNode.SelectNodes("//span[not(contains(@class, 'styleTableRow'))]");
-                
+                var datos = documento.DocumentNode.SelectNodes("//span[not(contains(@class, 'table'))]");
+
                 foreach (var inf in datos)
                 {
 
@@ -108,13 +167,13 @@ namespace BL
                     //db.titles.Add(oTitle);
                     //  var oDato = new DL.DatosPortal();
                     //oDato.IdFolioDeServicio = inf.InnerText;
-                   
-                    
+
+
 
 
                     //context.DatosPortals.Add(oDato);
                     datosextract.Add(inf.InnerText);
-                    Console.WriteLine(inf.InnerText.ToString());
+                    Console.WriteLine(inf.InnerText.ToString().ToArray());
                     //Console.WriteLine(datosextract.ToString());
 
                 }
