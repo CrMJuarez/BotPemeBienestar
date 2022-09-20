@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -73,57 +67,11 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
-    <Compile Include="Dato.cs">
-      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatosPortal.cs">
-      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatosPrueba.cs">
-      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExtraerDatosHidrosina.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ExtraerDatosHidrosina.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExtraerDatosHidrosina.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExtraerDatosHidrosina.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllDatos_Result.cs">
-      <DependentUpon>ExtraerDatosHidrosina.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ExtraerDatosHidrosina.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ExtraerDatosHidrosina.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="ExtraerDatosHidrosina.edmx.diagram">
-      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ExtraerDatosHidrosina.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ExtraerDatosHidrosina.Context.cs</LastGenOutput>
-      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
-    </Content>
-    <Content Include="ExtraerDatosHidrosina.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ExtraerDatosHidrosina.edmx</DependentUpon>
-      <LastGenOutput>ExtraerDatosHidrosina.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
