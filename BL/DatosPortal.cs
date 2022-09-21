@@ -42,7 +42,7 @@ namespace BL
 
                     collection[5] = new SqlParameter("@FechaRealizarServicio", System.Data.SqlDbType.VarChar);
                     collection[5].Value = datosPortal.FechaRealizarServicio;
-
+                    
                     collection[6] = new SqlParameter("@OrdenServicio", System.Data.SqlDbType.VarChar);
                     collection[6].Value = datosPortal.OrdenServicio;
 
@@ -103,11 +103,11 @@ namespace BL
                         cmd.Connection = context;
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        ML.DatosPortal datosPortal = new ML.DatosPortal();
+                       
                         SqlParameter[] collection = new SqlParameter[1];
 
                         collection[0] = new SqlParameter("@IdFolioDeServicio", System.Data.SqlDbType.VarChar);
-                        collection[0].Value = datosPortal.IdFolioDeServicio;
+                        collection[0].Value = IdFolioDeServicio;
 
                         cmd.Parameters.AddRange(collection);
 
@@ -120,21 +120,21 @@ namespace BL
 
                             if (datosTable.Rows.Count > 0)
                             {
-
+                                result.Objects = new List<object>();
                                 DataRow row1 = datosTable.Rows[0];
-
+                                ML.DatosPortal datosPortal = new ML.DatosPortal();
                                 datosPortal.IdFolioDeServicio = row1[0].ToString();
                                 datosPortal.Prioridad = row1[1].ToString();
                                 datosPortal.TipoServicio = row1[2].ToString();
                                 datosPortal.SucursalConsignatario = row1[3].ToString();
-                                datosPortal.FechaCaptura = row1[4].ToString();
+                                datosPortal.FechaCaptura =row1[4].ToString();
                                 datosPortal.FechaRealizarServicio = row1[5].ToString();
                                 datosPortal.OrdenServicio = row1[6].ToString();
                                 datosPortal.Importe = decimal.Parse(row1[7].ToString());
                                 datosPortal.Divisa = row1[8].ToString();
-                                datosPortal.Ter = row1[9].ToString();
+                                datosPortal.Te = row1[9].ToString();
                                 datosPortal.HoraEnvio = row1[10].ToString();
-                                datosPortal.Actualización = row1[11].ToString();
+                                datosPortal.Actualización =row1[11].ToString();
                                 datosPortal.Estatus = row1[12].ToString();
                                 result.Object = datosPortal;
 
@@ -143,7 +143,7 @@ namespace BL
                             else
                             {
                                 result.Correct = false;
-                                result.ErrorMessage = "No se encontraron registros en la tabla Materia";
+                                result.ErrorMessage = "No se encontraron registros";
                             }
                         }
                     }
@@ -201,8 +201,8 @@ namespace BL
                     collection[8] = new SqlParameter("@Divisa", System.Data.SqlDbType.VarChar);
                     collection[8].Value = datosPortal.Divisa;
 
-                    collection[9] = new SqlParameter("@Ter", System.Data.SqlDbType.VarChar);
-                    collection[9].Value = datosPortal.Ter;
+                    collection[9] = new SqlParameter("@Te", System.Data.SqlDbType.VarChar);
+                    collection[9].Value = datosPortal.Te;
 
                     collection[10] = new SqlParameter("@HoraEnvio", System.Data.SqlDbType.VarChar);
                     collection[10].Value = datosPortal.HoraEnvio;
