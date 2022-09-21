@@ -28,7 +28,7 @@ namespace BL
                     collection[0] = new SqlParameter("@IdFolioDeServicio", System.Data.SqlDbType.VarChar);
                     collection[0].Value = datosPortal.IdFolioDeServicio;
 
-                    collection[1] = new SqlParameter("@IdFolioDeServicio", System.Data.SqlDbType.VarChar);
+                    collection[1] = new SqlParameter("@Prioridad", System.Data.SqlDbType.VarChar);
                     collection[1].Value = datosPortal.Prioridad;
 
                     collection[2] = new SqlParameter("@TipoServicio", System.Data.SqlDbType.VarChar);
@@ -52,8 +52,8 @@ namespace BL
                     collection[8] = new SqlParameter("@Divisa", System.Data.SqlDbType.VarChar);
                     collection[8].Value = datosPortal.Divisa;
 
-                    collection[9] = new SqlParameter("@Ter", System.Data.SqlDbType.VarChar);
-                    collection[9].Value = datosPortal.Ter;
+                    collection[9] = new SqlParameter("@Te", System.Data.SqlDbType.VarChar);
+                    collection[9].Value = datosPortal.Te;
 
                     collection[10] = new SqlParameter("@HoraEnvio", System.Data.SqlDbType.VarChar);
                     collection[10].Value = datosPortal.HoraEnvio;

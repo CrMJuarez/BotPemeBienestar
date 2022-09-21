@@ -15,9 +15,9 @@ namespace ML
         public string FechaCaptura { get; set; }
         public string FechaRealizarServicio { get; set; }
         public string OrdenServicio { get; set; }
-        public decimal Importe { get; set; }
+        public decimal? Importe { get; set; }
         public string Divisa { get; set; }
-        public string Ter { get; set; }
+        public string Te { get; set; }
         public string HoraEnvio { get; set; }
         public string Actualización { get; set; }
         public string Estatus { get; set; }
