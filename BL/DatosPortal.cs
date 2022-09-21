@@ -17,10 +17,10 @@ namespace BL
             {
                 using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnection()))
                 {
-                    string queryyy = "DatosAdd";
+                    string query = "DatosAdd";
 
                     SqlCommand cmd = new SqlCommand();
-                    cmd.CommandText = queryyy;
+                    cmd.CommandText = query;
                     cmd.Connection = context;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     SqlParameter[] collection = new SqlParameter[13];
@@ -88,7 +88,7 @@ namespace BL
 
         }
 
-        public static ML.Result GetById(ML.DatosPortal datosPortal)
+        public static ML.Result GetById(string IdFolioDeServicio)
         {
             ML.Result result = new ML.Result();
             try
@@ -103,11 +103,11 @@ namespace BL
                         cmd.Connection = context;
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        ML.DatosPortal datos1 = new ML.DatosPortal();
+                        ML.DatosPortal datosPortal = new ML.DatosPortal();
                         SqlParameter[] collection = new SqlParameter[1];
 
                         collection[0] = new SqlParameter("@IdFolioDeServicio", System.Data.SqlDbType.VarChar);
-                        collection[0].Value = datos1.IdFolioDeServicio;
+                        collection[0].Value = datosPortal.IdFolioDeServicio;
 
                         cmd.Parameters.AddRange(collection);
 
@@ -166,10 +166,10 @@ namespace BL
             {
                 using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnection()))
                 {
-                    string queryy = "DatosUpdate";
+                    string query = "DatosUpdate";
 
                     SqlCommand cmd = new SqlCommand();
-                    cmd.CommandText = queryy;
+                    cmd.CommandText = query;
                     cmd.Connection = context;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     SqlParameter[] collection = new SqlParameter[13];
