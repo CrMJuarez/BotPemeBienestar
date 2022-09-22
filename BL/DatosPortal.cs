@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace BL
 {
     public class DatosPortal
     {
+        //SQLCLIENT
         public static ML.Result Add(ML.DatosPortal datosPortal)
         {
             ML.Result result = new ML.Result();
@@ -41,7 +43,8 @@ namespace BL
                     collection[4].Value = datosPortal.FechaCaptura;
 
                     collection[5] = new SqlParameter("@FechaRealizarServicio", System.Data.SqlDbType.VarChar);
-                    collection[5].Value = datosPortal.FechaRealizarServicio;
+                    collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                    //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
 
                     collection[6] = new SqlParameter("@OrdenServicio", System.Data.SqlDbType.VarChar);
                     collection[6].Value = datosPortal.OrdenServicio;
@@ -129,6 +132,10 @@ namespace BL
                                 datosPortal.SucursalConsignatario = row1[3].ToString();
                                 datosPortal.FechaCaptura = row1[4].ToString();
                                 datosPortal.FechaRealizarServicio = row1[5].ToString();
+                                
+                                //DateTime.ParseExact(dtRows[i], "yyyy/MM/DD HH:mm:ss", CultureInfo.InvariantCulture);
+                                //DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                                //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
                                 datosPortal.OrdenServicio = row1[6].ToString();
                                 datosPortal.Importe = decimal.Parse(row1[7].ToString());
                                 datosPortal.Divisa = row1[8].ToString();
@@ -191,6 +198,7 @@ namespace BL
 
                     collection[5] = new SqlParameter("@FechaRealizarServicio", System.Data.SqlDbType.VarChar);
                     collection[5].Value = datosPortal.FechaRealizarServicio;
+                    //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
 
                     collection[6] = new SqlParameter("@OrdenServicio", System.Data.SqlDbType.VarChar);
                     collection[6].Value = datosPortal.OrdenServicio;
@@ -209,6 +217,8 @@ namespace BL
 
                     collection[11] = new SqlParameter("@Actualización", System.Data.SqlDbType.VarChar);
                     collection[11].Value = datosPortal.Actualización;
+                    //collection[11].Value = DateTime.ParseExact(datosPortal.Actualización, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                
 
                     collection[12] = new SqlParameter("@Estatus", System.Data.SqlDbType.VarChar);
                     collection[12].Value = datosPortal.Estatus;

@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
+
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace RespuestaBotService1
 {
     public partial class BotRespuestaService1 : ServiceBase
     {
+        Timer Timer = new Timer();
+        int Interval = 10000; // 10000 ms = 10 second 3000= 3 second
+        
         public BotRespuestaService1()
         {
             InitializeComponent();
@@ -25,12 +32,47 @@ namespace RespuestaBotService1
         }
         protected override void OnStart(string[] args)
         {
+            WriteLog("Service has been started");
+            Timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
+            Timer.Interval = Interval;
+            Timer.Enabled = true;
+            PL.DatosPortal.ExtraerDatos();
             eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
+        }
+        private void OnElapsedTime(object source, ElapsedEventArgs e)
+        {
+            WriteLog("{0} ms elapsed.");
+            ServiceController servicio = new ServiceController("BotRespuestaService1");
+            servicio.Refresh();
         }
 
         protected override void OnStop()
         {
             eventoSistema.WriteEntry("Se ha detenido el servicio de respuesta (BotRespuestaService1).");
+            
         }
+        private void WriteLog(string logMessage, bool addTimeStamp = true)
+        {
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            var filePath = String.Format("{0}\\{1}_{2}.txt",
+                path,
+                ServiceName,
+                DateTime.Now.ToString("yyyyMMdd", CultureInfo.CurrentCulture)
+                );
+
+            if (addTimeStamp)
+                logMessage = String.Format("[{0}] - {1}",
+                    DateTime.Now.ToString("HH:mm:ss", CultureInfo.CurrentCulture),
+                    logMessage);
+
+            File.AppendAllText(filePath, logMessage);
+
+            
+        }
+       
     }
+    
 }

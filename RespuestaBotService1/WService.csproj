@@ -72,5 +72,11 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PL\PL.csproj">
+      <Project>{700ade19-1df4-4cd4-b3c0-4549e1a783b9}</Project>
+      <Name>PL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
