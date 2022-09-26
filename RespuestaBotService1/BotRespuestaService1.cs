@@ -36,12 +36,15 @@ namespace RespuestaBotService1
             Timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
             Timer.Interval = Interval;
             Timer.Enabled = true;
+
+            //Firma del metodo 
             PL.DatosPortal.ExtraerDatos();
             eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
         }
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
             WriteLog("{0} ms elapsed.");
+            //si no funciona hay que eliminar estas dos lineas 
             ServiceController servicio = new ServiceController("BotRespuestaService1");
             servicio.Refresh();
         }
