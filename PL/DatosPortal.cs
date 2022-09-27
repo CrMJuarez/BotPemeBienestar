@@ -102,6 +102,9 @@ namespace PL
                         //trae los td de forma decendiente y en un arreglo
                         var tds = cell.Descendants("td").ToArray(); // trae todos los td
 
+                        //condicion para que cuando detecte los headers que esos datos no nos sirven entre al if
+                        //y si el valor es igual al primero del arreglo de tds continue con el 
+                        //siguiente ciclo que es en el que ya vienen los datos importantes
                         if (tds.Count() == 19)
                         {
                             var Valor = "Id";
@@ -111,6 +114,7 @@ namespace PL
                                 continue;
                             }
                         }
+                        //condicion para que en cuanto detecte que hay 19 nodos que son los que pertenecen a la tabla obtenga esos datos
 
                         if (tds.Count() == 19)
                         {
