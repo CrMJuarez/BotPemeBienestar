@@ -35,10 +35,13 @@ namespace PL
 
             //<----------------------
 
+           
+            var Url = System.Configuration.ConfigurationManager.AppSettings["Page"].ToString();
             //instancia del navegador en segundo plano
             IWebDriver driver = new ChromeDriver(chromeOptions);//<---Quitar valor chromeOptions si se van a hacer pruebas
-            driver.Navigate().GoToUrl("https://portal.gsi.com.mx:8443/portal_desa/Logout.do");
+            driver.Navigate().GoToUrl(Url);
             //se mandan las credenciales 
+           
             var User = System.Configuration.ConfigurationManager.AppSettings["txUsuario"].ToString();
             var Password = System.Configuration.ConfigurationManager.AppSettings["txtPassword"].ToString();
 
