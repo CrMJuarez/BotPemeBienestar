@@ -38,54 +38,60 @@ namespace PL
         public static void ExtraerDatos()
 
         {
-
+            //instancia del navegador en segundo plano
             IWebDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://portal.gsi.com.mx:8443/portal_desa/Logout.do");
-
+            //se mandan las credenciales 
             var Input = driver.FindElement(By.Id("txtUsuario"));
             Input.SendKeys("MONHDRS03");
 
             var Input1 = driver.FindElement(By.Id("txtPassword"));
             Input1.SendKeys("123");
-
+            //se hace input al boton de login
             var Input2 = driver.FindElement(By.Name("imgLogin"));
             Input2.Submit();
-            //string pagesrc = driver.PageSource;
-            string pagesrc1 = driver.PageSource;
-
+            
+            
+            //se pone un tiempo de espera para que cargue los elementos
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
+            //se hace uso de switchto para esoger el frame por nombre
             driver.SwitchTo().Frame("fraEncabezado");
+            //se pone ActiveElement(); para que mantenga cargado lo que esta dentro del frame y asi nos muestre el contenido en html
             driver.SwitchTo().ActiveElement();
-            string pagesrc = driver.PageSource;
+
+            //se selecciona el combo con la opcion Monitor de Solicitudes TV para pasar a la siguente pagina con el evento click
             driver.FindElement(By.XPath("//select[@id='" + "cboMenus" + "']/option[contains(.,'" + "Monitor de Solicitudes TV" + "')]")).Click();
+
+            //A diferencia del active aqui si necesitamos el contenido por default para que podamos encontrar ahoara el fraPrincipal
             driver.SwitchTo().DefaultContent();
-
-            string pagesrc2 = driver.PageSource;
-            
-
             driver.SwitchTo().Frame("fraPrincipal");
+            //una vez que encontro el fraPrincipal ahora si que nos traiga el contenido activo dentro de el
             driver.SwitchTo().ActiveElement();
-            string pagesrc3 = driver.PageSource;
-
             
+            //seleccionamos el boton para que cargue lso datos en la tabla con un evento click
             driver.FindElement(By.Id("btnFilFecha")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-            string pagesrc4 = driver.PageSource;
+            //guardamos el contenido del html generado en una variable tipo string
+            string pagesrc = driver.PageSource;
+
+            //creamos la instancia de la libreria web client
             WebClient webClient1 = new WebClient();
-            
-            var doc1 = new HtmlDocument();
+            //declaramos una variable tippo doc que toma por valor htmldocument
+            var doc = new HtmlDocument();
 
-            doc1.LoadHtml(pagesrc4);
+            //se carga el contenido de la variable pagesrc y lo convierte a htmldocument
+            doc.LoadHtml(pagesrc);
 
-            var myTable = doc1.DocumentNode
+            //se encarga de encontrar dentro del documento la tabla que nos interesa 
+            var myTable = doc.DocumentNode
                  .Descendants("div")
                  .Where(t => t.Attributes["id"].Value == "tablaJson")
                  .FirstOrDefault();
 
             //se hace un foreach para que selecciones los datos de la tabla
-            foreach (HtmlNode table in doc1.DocumentNode.SelectNodes("//table[1]"))
+            foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table[1]"))
             {
                 //segundo foreach para que divida el documento por div
                 foreach (HtmlNode row in table.SelectNodes("//div"))
@@ -128,7 +134,7 @@ namespace PL
                             datosPortal.HoraEnvio = tds[11].InnerText.ToString();
                             datosPortal.Actualización = tds[12].InnerText.ToString();
                             datosPortal.Estatus = tds[13].InnerText.ToString();
-
+                            //condiciones para que viaje entre metodos add,update,getbyid
                             if (datosPortal.IdFolioDeServicio == null)
                             {
                                 Console.WriteLine("No existe formato valido de folio de servicio");
