@@ -63,7 +63,7 @@ namespace PL
             //se selecciona el combo con la opcion Monitor de Solicitudes TV para pasar a la siguente pagina con el evento click
             driver.FindElement(By.XPath("//select[@id='" + "cboMenus" + "']/option[contains(.,'" + "Monitor de Solicitudes TV" + "')]")).Click();
 
-            //A diferencia del active aqui si necesitamos el contenido por default para que podamos encontrar ahoara el fraPrincipal
+            //A diferencia del active aqui si necesitamos el contenido por default para que podamos encontrar ahoara el frame Principal
             driver.SwitchTo().DefaultContent();
             driver.SwitchTo().Frame("fraPrincipal");
             //una vez que encontro el fraPrincipal ahora si que nos traiga el contenido activo dentro de el
@@ -71,7 +71,7 @@ namespace PL
             
             //seleccionamos el boton para que cargue lso datos en la tabla con un evento click
             driver.FindElement(By.Id("btnFilFecha")).Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             //guardamos el contenido del html generado en una variable tipo string
             string pagesrc = driver.PageSource;
