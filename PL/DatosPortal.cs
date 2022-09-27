@@ -39,11 +39,14 @@ namespace PL
             IWebDriver driver = new ChromeDriver(chromeOptions);//<---Quitar valor chromeOptions si se van a hacer pruebas
             driver.Navigate().GoToUrl("https://portal.gsi.com.mx:8443/portal_desa/Logout.do");
             //se mandan las credenciales 
+            var User = System.Configuration.ConfigurationManager.AppSettings["txUsuario"].ToString();
+            var Password = System.Configuration.ConfigurationManager.AppSettings["txtPassword"].ToString();
+
             var Input = driver.FindElement(By.Id("txtUsuario"));
-            Input.SendKeys("MONHDRS03");
+            Input.SendKeys(User);
 
             var Input1 = driver.FindElement(By.Id("txtPassword"));
-            Input1.SendKeys("123");
+            Input1.SendKeys(Password);
             //se hace input al boton de login
             var Input2 = driver.FindElement(By.Name("imgLogin"));
             Input2.Submit();
