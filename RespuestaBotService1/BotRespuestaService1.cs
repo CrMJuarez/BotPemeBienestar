@@ -40,15 +40,16 @@ namespace RespuestaBotService1
             //Firma del metodo 
             PL.DatosPortal.ExtraerDatos();
             eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
+            ServiceController servicio = new ServiceController("BotRespuestaService1");
+            servicio.Stop();
         }
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
             WriteLog("{0} ms elapsed.");
             //si no funciona hay que comentar estas dos lineas 
-            ServiceController servicio = new ServiceController("BotRespuestaService1");
-            servicio.Refresh();
+            //ServiceController servicio = new ServiceController("BotRespuestaService1");
+            //servicio.Refresh();
         }
-
         protected override void OnStop()
         {
             eventoSistema.WriteEntry("Se ha detenido el servicio de respuesta (BotRespuestaService1).");
@@ -71,9 +72,7 @@ namespace RespuestaBotService1
                     DateTime.Now.ToString("HH:mm:ss", CultureInfo.CurrentCulture),
                     logMessage);
 
-            File.AppendAllText(filePath, logMessage);
-
-            
+            File.AppendAllText(filePath, logMessage);            
         }
        
     }
