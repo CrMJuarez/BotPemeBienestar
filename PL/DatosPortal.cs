@@ -158,8 +158,10 @@ namespace PL
                             }
                         }
                     }
+                    //se pone break para que salga del ciclo despues de insertan todos los datos ya que si no se pone no para nunca
                     break;
                 }
+                //se pone break para que salga del ciclo principal
                 break;
             }
         }
