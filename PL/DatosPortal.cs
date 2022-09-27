@@ -26,14 +26,14 @@ namespace PL
             //Se colocan los chrome options para evitar que se abra el navegador en segundo plano y todo lo haga internamente
             //COMENTAR si se van a hacer pruebas 
             var chromeOptions = new ChromeOptions();
-            
+
             chromeOptions.AddArguments(new List<string>() {
     "--silent-launch",
     "--no-startup-window",
     "no-sandbox",
     "headless",});
 
-//<----------------------
+            //<----------------------
 
 
 
@@ -49,8 +49,8 @@ namespace PL
             //se hace input al boton de login
             var Input2 = driver.FindElement(By.Name("imgLogin"));
             Input2.Submit();
-            
-            
+
+
             //se pone un tiempo de espera para que cargue los elementos
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
@@ -67,7 +67,7 @@ namespace PL
             driver.SwitchTo().Frame("fraPrincipal");
             //una vez que encontro el fraPrincipal ahora si que nos traiga el contenido activo dentro de el
             driver.SwitchTo().ActiveElement();
-            
+
             //seleccionamos el boton para que cargue lso datos en la tabla con un evento click
             driver.FindElement(By.Id("btnFilFecha")).Click();
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
