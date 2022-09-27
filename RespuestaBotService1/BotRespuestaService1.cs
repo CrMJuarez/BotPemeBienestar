@@ -44,7 +44,7 @@ namespace RespuestaBotService1
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
             WriteLog("{0} ms elapsed.");
-            //si no funciona hay que eliminar estas dos lineas 
+            //si no funciona hay que comentar estas dos lineas 
             ServiceController servicio = new ServiceController("BotRespuestaService1");
             servicio.Refresh();
         }

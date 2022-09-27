@@ -15,8 +15,8 @@ namespace PL
         {
 
             //Sesion.Session();
-            DatosPortal.ExtraerDatos();
-            Console.ReadKey();
+            //DatosPortal.ExtraerDatos();
+            //Console.ReadKey();
         }
     }
 }
