@@ -79,8 +79,7 @@ namespace PL
             //guardamos el contenido del html generado en una variable tipo string
             string pagesrc = driver.PageSource;
 
-            //creamos la instancia de la libreria web client
-            WebClient webClient1 = new WebClient();
+           
             //declaramos una variable tippo doc que toma por valor htmldocument
             var doc = new HtmlDocument();
 
