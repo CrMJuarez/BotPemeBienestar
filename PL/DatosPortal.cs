@@ -35,8 +35,6 @@ namespace PL
 
             //<----------------------
 
-
-
             //instancia del navegador en segundo plano
             IWebDriver driver = new ChromeDriver(chromeOptions);//<---Quitar valor chromeOptions si se van a hacer pruebas
             driver.Navigate().GoToUrl("https://portal.gsi.com.mx:8443/portal_desa/Logout.do");
@@ -156,6 +154,35 @@ namespace PL
                                     Console.WriteLine("Se registraron los datos");
                                 }
                             }
+
+
+                            //intento con equals
+                            //if (datosPortal.IdFolioDeServicio == null)
+                            //{
+                            //    Console.WriteLine("No existe formato valido de folio de servicio");
+                            //}
+                            //else
+                            //{
+                            //    ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
+                            //    if (result.Equals(datosPortal))
+                            //    //if (result.Equals(datosPortal))
+                            //    {
+                            //        Console.WriteLine("No hay datos que modificar");
+                            //        //BL.DatosPortal.Update(datosPortal);
+                            //        //Console.WriteLine("Se modificado los datos");
+                            //    }
+                            //    else
+                            //    {
+                            //        BL.DatosPortal.Update(datosPortal);
+                            //        Console.WriteLine("Se modificaron los datos");
+                            //        //BL.DatosPortal.Add(datosPortal);
+                            //        //Console.WriteLine("Se registraron los datos");
+                            //    }
+                            //}
+
+
+
+
                         }
                     }
                     //se pone break para que salga del ciclo despues de insertan todos los datos ya que si no se pone no para nunca
