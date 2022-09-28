@@ -38,7 +38,7 @@ namespace RespuestaBotService1
             Timer.Enabled = true;
 
             //Firma del metodo 
-            //PL.DatosPortal.ExtraerDatos();
+            PL.DatosPortal.ExtraerDatos();
             
             eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
             //ServiceController servicio = new ServiceController("BotRespuestaService1");
