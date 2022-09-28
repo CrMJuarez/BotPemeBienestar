@@ -38,18 +38,37 @@ namespace RespuestaBotService1
             Timer.Enabled = true;
 
             //Firma del metodo 
-            PL.DatosPortal.ExtraerDatos();
+            //PL.DatosPortal.ExtraerDatos();
             
-            eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
-            //ServiceController servicio = new ServiceController("BotRespuestaService1");
-            //servicio.Stop();
+            ServiceController servicio = new ServiceController("BotRespuestaService1");
+            int timeoutMilisegundos = 10000;
+            try
+            {
+                TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutMilisegundos);
+                servicio.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                eventoSistema.WriteEntry("Se ha iniciado el servicio de respuesta (BotRespuestaService1).");
+                //ServiceController servicio = new ServiceController("BotRespuestaService1");
+                //servicio.Stop();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.EventLog.WriteEntry("Application", "Excepción: " + ex.Message);
+            }
         }
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
-            WriteLog("{0} ms elapsed.");
-            //si no funciona hay que comentar estas dos lineas 
-            //ServiceController servicio = new ServiceController("BotRespuestaService1");
-            //servicio.Refresh();
+            try
+            {
+                WriteLog("{0} ms elapsed.");
+                PL.DatosPortal.ExtraerDatos();
+                //si no funciona hay que comentar estas dos lineas 
+                //ServiceController servicio = new ServiceController("BotRespuestaService1");
+                //servicio.Refresh();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.EventLog.WriteEntry("Application", "Excepción: " + ex.Message);
+            }
         }
         protected override void OnStop()
         {

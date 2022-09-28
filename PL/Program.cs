@@ -14,8 +14,8 @@ namespace PL
         public static void Main(string[] args)
         {
             
-            //DatosPortal.ExtraerDatos();           
-            Timer timer = new Timer(30000);
+            DatosPortal.ExtraerDatos();           
+            Timer timer = new Timer(10000);//10000
             //timer.AutoReset = true;
 
             timer.Elapsed += EventoElapsed;

@@ -34,7 +34,7 @@ namespace PL
     "headless",});
 
             //<----------------------
-            
+
             //instancia del navegador en segundo plano
             IWebDriver driver = new ChromeDriver(chromeOptions);//<---Quitar valor chromeOptions si se van a hacer pruebas
 
