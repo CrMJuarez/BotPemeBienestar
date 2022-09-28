@@ -28,15 +28,15 @@ namespace PL
             var chromeOptions = new ChromeOptions();
 
             chromeOptions.AddArguments(new List<string>() {
-    "--silent-launch",
-    "--no-startup-window",
-    "no-sandbox",
-    "headless",});
+            "--silent-launch",
+            "--no-startup-window",
+            "no-sandbox",
+            "headless",});
 
             //<----------------------
 
             //instancia del navegador en segundo plano
-            IWebDriver driver = new ChromeDriver(chromeOptions);//<---Quitar valor chromeOptions si se van a hacer pruebas
+            IWebDriver driver = new ChromeDriver(chromeOptions);/*chromeOptions/*///<---Quitar valor chromeOptions si se van a hacer pruebas
 
 
             //string Url = System.Configuration.ConfigurationManager.AppSettings["Page"].ToString();
@@ -76,10 +76,14 @@ namespace PL
             //seleccionamos el boton para que cargue lso datos en la tabla con un evento click
             driver.FindElement(By.Id("btnFilFecha")).Click();
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            //Cierra las ventanas creadas una vez que ya logramos obtener el html 
+           
 
             //guardamos el contenido del html generado en una variable tipo string
             string pagesrc = driver.PageSource;
-
+            //Cierra las ventanas creadas una vez que ya logramos obtener el html 
+            //Libera todos los recursos 
+            driver.Quit();
 
             //declaramos una variable tippo doc que toma por valor htmldocument
             var doc = new HtmlDocument();

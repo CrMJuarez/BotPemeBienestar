@@ -44,7 +44,6 @@ namespace BL
 
                     collection[5] = new SqlParameter("@FechaRealizarServicio", System.Data.SqlDbType.VarChar);
                     collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-                    //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
 
                     collection[6] = new SqlParameter("@OrdenServicio", System.Data.SqlDbType.VarChar);
                     collection[6].Value = datosPortal.OrdenServicio;
@@ -196,7 +195,6 @@ namespace BL
 
                     collection[5] = new SqlParameter("@FechaRealizarServicio", System.Data.SqlDbType.VarChar);
                     collection[5].Value = datosPortal.FechaRealizarServicio;
-                    //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
 
                     collection[6] = new SqlParameter("@OrdenServicio", System.Data.SqlDbType.VarChar);
                     collection[6].Value = datosPortal.OrdenServicio;
@@ -214,9 +212,7 @@ namespace BL
                     collection[10].Value = datosPortal.HoraEnvio;
 
                     collection[11] = new SqlParameter("@Actualización", System.Data.SqlDbType.VarChar);
-                    collection[11].Value = datosPortal.Actualización;
-                    //collection[11].Value = DateTime.ParseExact(datosPortal.Actualización, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-                
+                    collection[11].Value = datosPortal.Actualización;                
 
                     collection[12] = new SqlParameter("@Estatus", System.Data.SqlDbType.VarChar);
                     collection[12].Value = datosPortal.Estatus;
