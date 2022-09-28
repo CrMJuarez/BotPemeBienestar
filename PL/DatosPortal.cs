@@ -163,35 +163,35 @@ namespace PL
 
 
                             //intento con equals
-                            //if (datosPortal.IdFolioDeServicio == null)
-                            //{
-                            //    Console.WriteLine("No existe formato valido de folio de servicio");
-                            //}
-                            //else
-                            //{
-                            //    ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
-                            //    if (result.Correct)
-                            //    {
-                            //        if (result.Equals(datosPortal))
-
+                            //        if (datosPortal.IdFolioDeServicio == null)
                             //        {
-                            //            Console.WriteLine("No hay cambios en fila");
+                            //            Console.WriteLine("No existe formato valido de folio de servicio");
                             //        }
                             //        else
                             //        {
-                            //            BL.DatosPortal.Update(datosPortal);
-                            //            Console.WriteLine("Se modificaron los datos");
+                            //            ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
+                            //            if (result.Correct)
+                            //            {
+                            //                if (result.Equals(datosPortal))
 
+                            //                {
+                            //                    Console.WriteLine("No hay cambios en fila");
+                            //                }
+                            //                else
+                            //                {
+                            //                    BL.DatosPortal.Update(datosPortal);
+                            //                    Console.WriteLine("Se modificaron los datos");
+
+                            //                }
+                            //            }
+                            //            else
+                            //            {
+
+                            //                BL.DatosPortal.Add(datosPortal);
+                            //                Console.WriteLine("Se registraron los datos");
+
+                            //            }
                             //        }
-                            //    }
-                            //    else
-                            //    {
-
-                            //        BL.DatosPortal.Add(datosPortal);
-                            //        Console.WriteLine("Se registraron los datos");
-
-                            //    }
-                            //}
                         }
                     }
                     //se pone break para que salga del ciclo despues de insertan todos los datos ya que si no se pone no para nunca

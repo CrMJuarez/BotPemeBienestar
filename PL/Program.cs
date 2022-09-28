@@ -17,14 +17,14 @@ namespace PL
             DatosPortal.ExtraerDatos();
             //----->
             //comentar para poder depurar
-            Timer timer = new Timer(10000);//30000
+            Timer timer = new Timer(15000);//30000
 
             timer.Elapsed += EventoElapsed;
             timer.Start();
 
             while (true) ;
             /////<-------
-            
+
         }
         //----->
         //comentar para poder depurar
@@ -34,6 +34,6 @@ namespace PL
 
         }
         /////<-------
-      
+
     }
 }

@@ -132,10 +132,6 @@ namespace BL
                                 datosPortal.SucursalConsignatario = row1[3].ToString();
                                 datosPortal.FechaCaptura = row1[4].ToString();
                                 datosPortal.FechaRealizarServicio = row1[5].ToString();
-                                
-                                //DateTime.ParseExact(dtRows[i], "yyyy/MM/DD HH:mm:ss", CultureInfo.InvariantCulture);
-                                //DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-                                //collection[5].Value = DateTime.ParseExact(datosPortal.FechaRealizarServicio, "dd/mm/yyyy", CultureInfo.InvariantCulture);
                                 datosPortal.OrdenServicio = row1[6].ToString();
                                 datosPortal.Importe = decimal.Parse(row1[7].ToString());
                                 datosPortal.Divisa = row1[8].ToString();
@@ -143,6 +139,7 @@ namespace BL
                                 datosPortal.HoraEnvio = row1[10].ToString();
                                 datosPortal.Actualización = row1[11].ToString();
                                 datosPortal.Estatus = row1[12].ToString();
+                             
                                 result.Object = datosPortal;
 
                                 result.Correct = true;
@@ -152,6 +149,7 @@ namespace BL
                                 result.Correct = false;
                                 result.ErrorMessage = "No se encontraron registros";
                             }
+                           
                         }
                     }
                 }
