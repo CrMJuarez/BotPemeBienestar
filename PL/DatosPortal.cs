@@ -80,7 +80,7 @@ namespace PL
             //guardamos el contenido del html generado en una variable tipo string
             string pagesrc = driver.PageSource;
 
-           
+
             //declaramos una variable tippo doc que toma por valor htmldocument
             var doc = new HtmlDocument();
 
@@ -170,25 +170,28 @@ namespace PL
                             //else
                             //{
                             //    ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
-                            //    if (result.Equals(datosPortal))
-                            //    //if (result.Equals(datosPortal))
+                            //    if (result.Correct)
                             //    {
-                            //        Console.WriteLine("No hay datos que modificar");
-                            //        //BL.DatosPortal.Update(datosPortal);
-                            //        //Console.WriteLine("Se modificado los datos");
+                            //        if (result.Equals(datosPortal))
+
+                            //        {
+                            //            Console.WriteLine("No hay cambios en fila");
+                            //        }
+                            //        else
+                            //        {
+                            //            BL.DatosPortal.Update(datosPortal);
+                            //            Console.WriteLine("Se modificaron los datos");
+
+                            //        }
                             //    }
                             //    else
                             //    {
-                            //        BL.DatosPortal.Update(datosPortal);
-                            //        Console.WriteLine("Se modificaron los datos");
-                            //        //BL.DatosPortal.Add(datosPortal);
-                            //        //Console.WriteLine("Se registraron los datos");
+
+                            //        BL.DatosPortal.Add(datosPortal);
+                            //        Console.WriteLine("Se registraron los datos");
+
                             //    }
                             //}
-
-
-
-
                         }
                     }
                     //se pone break para que salga del ciclo despues de insertan todos los datos ya que si no se pone no para nunca

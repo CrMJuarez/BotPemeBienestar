@@ -14,26 +14,26 @@ namespace PL
         public static void Main(string[] args)
         {
             
-            DatosPortal.ExtraerDatos();           
-            Timer timer = new Timer(10000);//10000
-            //timer.AutoReset = true;
+            DatosPortal.ExtraerDatos();
+            //----->
+            //comentar para poder depurar
+            Timer timer = new Timer(10000);//30000
 
             timer.Elapsed += EventoElapsed;
             timer.Start();
-            //DatosPortal.ExtraerDatos();
-            //DatosPortal.ExtraerDatos();
+
             while (true) ;
-            //Console.ReadKey();
+            /////<-------
+            
         }
+        //----->
+        //comentar para poder depurar
         private static void EventoElapsed(object sender, ElapsedEventArgs e)
         {
             DatosPortal.ExtraerDatos();
 
         }
-        //private static Task HandleTimer()
-        //{
-        //    Console.WriteLine("\nHandler not implemented...");
-        //    throw new NotImplementedException();
-        //}
+        /////<-------
+      
     }
 }
