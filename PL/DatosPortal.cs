@@ -144,7 +144,7 @@ namespace PL
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
                             datosPortal.FechaCaptura = tds[4].InnerText.ToString();
                             datosPortal.FechaRealizarServicio = tds[5].InnerText.ToString();
-                            //datosPortal - src = obten(datosPortal.SucursalConsignatario);                            datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
+                            datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
                             datosPortal.OrdenServicio = tds[7].InnerText.ToString();
                             char[] chars = { ' ' };
                             string Imp = tds[8].InnerText;
