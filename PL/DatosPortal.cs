@@ -31,18 +31,18 @@ namespace PL
             //----------->
             //Se colocan los chrome options para evitar que se abra el navegador en segundo plano y todo lo haga internamente
             //COMENTAR si se van a hacer pruebas 
-            //var chromeOptions = new ChromeOptions();
+            var chromeOptions = new ChromeOptions();
 
-            //chromeOptions.AddArguments(new List<string>() {
-            //"--silent-launch",
-            //"--no-startup-window",
-            //"no-sandbox",
-            //"headless",});
+            chromeOptions.AddArguments(new List<string>() {
+            "--silent-launch",
+            "--no-startup-window",
+            "no-sandbox",
+            "headless",});
 
             //<----------------------
 
             //instancia del navegador en segundo plano
-            IWebDriver driver = new ChromeDriver(/*chromeOptions*/);/*chromeOptions/*///<---Quitar valor chromeOptions si se van a hacer pruebas
+            IWebDriver driver = new ChromeDriver(chromeOptions);/*chromeOptions/*///<---Quitar valor chromeOptions si se van a hacer pruebas
 
 
             string Url = System.Configuration.ConfigurationManager.AppSettings["Page"].ToString();
