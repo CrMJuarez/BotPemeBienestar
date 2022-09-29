@@ -32,8 +32,9 @@ namespace PL
 
         //private static void EventoElapsed(object sender, ElapsedEventArgs e)
         //{
-        //    DatosPortal.ExtraerDatos();
-        
+        //    DatosPortal dp = new DatosPortal();
+        //    dp.ExtraerDatos();
+
 
         //}
         /////<-------

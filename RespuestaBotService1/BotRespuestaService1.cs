@@ -60,6 +60,8 @@ namespace RespuestaBotService1
             try
             {
                 WriteLog("{0} ms elapsed.");
+                    PL.DatosPortal dp = new PL.DatosPortal();
+                    dp.ExtraerDatos();
                 //PL.DatosPortal.ExtraerDatos();
                 //si no funciona hay que comentar estas dos lineas 
                 //ServiceController servicio = new ServiceController("BotRespuestaService1");

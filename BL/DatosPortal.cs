@@ -128,15 +128,29 @@ namespace BL
                                 datosPortal.IdFolioDeServicio = row1[0].ToString();
                                 datosPortal.Prioridad = row1[1].ToString();
                                 datosPortal.TipoServicio = row1[2].ToString();
-                                datosPortal.SucursalConsignatario = row1[3].ToString();
-                                datosPortal.FechaCaptura = row1[4].ToString();
-                                datosPortal.FechaRealizarServicio = row1[5].ToString();
+                                datosPortal.SucursalConsignatario = row1[3].ToString();                       
+                                string sub = row1[4].ToString();                             
+                                string FechaCaptura = sub.Substring(0, 16);
+                                datosPortal.FechaCaptura = FechaCaptura;
+                                string sub3 = row1[5].ToString();
+                                string FechaRealizarServicio = sub3.Substring(0, 10);
+                                datosPortal.FechaRealizarServicio = FechaRealizarServicio;
                                 datosPortal.OrdenServicio = row1[6].ToString();
                                 datosPortal.Importe = decimal.Parse(row1[7].ToString());
                                 datosPortal.Divisa = row1[8].ToString();
                                 datosPortal.Te = row1[9].ToString();
-                                datosPortal.HoraEnvio = row1[10].ToString();
-                                datosPortal.Actualización = row1[11].ToString();
+                                string sub1 = row1[10].ToString();
+                                string HoraEnvio = sub1.Substring(0, 5);
+                                string Hre = "00:00";
+                                if (Hre.Equals(HoraEnvio))
+                                {
+                                    string hrs ="";
+                                    HoraEnvio = hrs; ;
+                                }
+                                datosPortal.HoraEnvio = HoraEnvio;
+                                string sub2 = row1[11].ToString();
+                                string Actualización = sub2.Substring(0, 16);                                
+                                datosPortal.Actualización = Actualización;
                                 datosPortal.Estatus = row1[12].ToString();
                              
                                 result.Object = datosPortal;
