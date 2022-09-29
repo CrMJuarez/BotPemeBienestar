@@ -19,38 +19,44 @@ namespace PL
     public class DatosPortal
     {
 
+        public class PaginaDocument
+        {
+            public string pagesrc { get; set; }
+        }
+
+
         public static void ExtraerDatos()
 
         {
             //----------->
             //Se colocan los chrome options para evitar que se abra el navegador en segundo plano y todo lo haga internamente
             //COMENTAR si se van a hacer pruebas 
-            var chromeOptions = new ChromeOptions();
+            //var chromeOptions = new ChromeOptions();
 
-            chromeOptions.AddArguments(new List<string>() {
-            "--silent-launch",
-            "--no-startup-window",
-            "no-sandbox",
-            "headless",});
+            //chromeOptions.AddArguments(new List<string>() {
+            //"--silent-launch",
+            //"--no-startup-window",
+            //"no-sandbox",
+            //"headless",});
 
             //<----------------------
 
             //instancia del navegador en segundo plano
-            IWebDriver driver = new ChromeDriver(chromeOptions);/*chromeOptions/*///<---Quitar valor chromeOptions si se van a hacer pruebas
+            IWebDriver driver = new ChromeDriver(/*chromeOptions*/);/*chromeOptions/*///<---Quitar valor chromeOptions si se van a hacer pruebas
 
 
-            //string Url = System.Configuration.ConfigurationManager.AppSettings["Page"].ToString();
-            driver.Navigate().GoToUrl("https://portal.gsi.com.mx:8443/portal_desa/Logout.do");
+            string Url = System.Configuration.ConfigurationManager.AppSettings["Page"].ToString();
+            driver.Navigate().GoToUrl(Url);
             //se mandan las credenciales 
 
-            //string User = System.Configuration.ConfigurationManager.AppSettings["txUsuario"].ToString();
-            //string Password = System.Configuration.ConfigurationManager.AppSettings["txtPassword"].ToString();
+            string User = System.Configuration.ConfigurationManager.AppSettings["txUsuario"].ToString();
+            string Password = System.Configuration.ConfigurationManager.AppSettings["txtPassword"].ToString();
 
             var Input = driver.FindElement(By.Id("txtUsuario"));
-            Input.SendKeys("MONHDRS03");
+            Input.SendKeys(User);
 
             var Input1 = driver.FindElement(By.Id("txtPassword"));
-            Input1.SendKeys("123");
+            Input1.SendKeys(Password);
             //se hace input al boton de login
             var Input2 = driver.FindElement(By.Name("imgLogin"));
             Input2.Submit();
@@ -77,19 +83,29 @@ namespace PL
             driver.FindElement(By.Id("btnFilFecha")).Click();
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             //Cierra las ventanas creadas una vez que ya logramos obtener el html 
-           
 
             //guardamos el contenido del html generado en una variable tipo string
-            string pagesrc = driver.PageSource;
+
+            PaginaDocument pag = new PaginaDocument();
+            pag.pagesrc= driver.PageSource;
+            
             //Cierra las ventanas creadas una vez que ya logramos obtener el html 
             //Libera todos los recursos 
             driver.Quit();
+            SepararDatos();
+
+        }
+
+       
+        public static void SepararDatos()
+
+        {
 
             //declaramos una variable tippo doc que toma por valor htmldocument
             var doc = new HtmlDocument();
 
             //se carga el contenido de la variable pagesrc y lo convierte a htmldocument
-            doc.LoadHtml(pagesrc);
+            doc.LoadHtml("");
 
             //se encarga de encontrar dentro del documento la tabla que nos interesa 
             var myTable = doc.DocumentNode

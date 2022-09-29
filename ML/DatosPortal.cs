@@ -22,7 +22,7 @@ namespace ML
         public string Actualización { get; set; }
         public string Estatus { get; set; }
         //public List<object> DatosDePortal { get; set; }
+        public string pagesrc { get; set; }
 
-  
     }
 }
