@@ -152,7 +152,7 @@ namespace BL
                                 string Actualización = sub2.Substring(0, 16);                                
                                 datosPortal.Actualización = Actualización;
                                 datosPortal.Estatus = row1[12].ToString();
-                             
+                                //result.Objects.Add(datosPortal);
                                 result.Object = datosPortal;
 
                                 result.Correct = true;

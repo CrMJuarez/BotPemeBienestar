@@ -18,11 +18,7 @@ namespace PL
 
     public class DatosPortal
     {
-
-       
-            public string pagesrc { get; set; }
-        
-
+            public string Pagesrc { get; set; }
 
         public void ExtraerDatos()
 
@@ -85,7 +81,7 @@ namespace PL
 
             //guardamos el contenido del html generado en una variable tipo string
 
-             pagesrc= driver.PageSource;
+            Pagesrc = driver.PageSource;
             
             //Cierra las ventanas creadas una vez que ya logramos obtener el html 
             //Libera todos los recursos 
@@ -102,7 +98,7 @@ namespace PL
             var doc = new HtmlDocument();
 
             //se carga el contenido de la variable pagesrc y lo convierte a htmldocument
-            doc.LoadHtml(pagesrc);
+            doc.LoadHtml(Pagesrc);
 
             //se encarga de encontrar dentro del documento la tabla que nos interesa 
             var myTable = doc.DocumentNode
@@ -141,16 +137,14 @@ namespace PL
                             //guarda los datos en las variables correspondientes para agregar a la base de datos
 
                             ML.DatosPortal datosPortal = new ML.DatosPortal();
-
+                            
                             //List<object> tss = new List<object>().ToList();
                             datosPortal.Prioridad = tds[1].InnerText.ToString();
                             datosPortal.TipoServicio = tds[2].InnerText.ToString();
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
                             datosPortal.FechaCaptura = tds[4].InnerText.ToString();
                             datosPortal.FechaRealizarServicio = tds[5].InnerText.ToString();
-                            //datosPortal - src = obten(datosPortal.SucursalConsignatario);
-
-                            datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
+                            //datosPortal - src = obten(datosPortal.SucursalConsignatario);                            datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
                             datosPortal.OrdenServicio = tds[7].InnerText.ToString();
                             char[] chars = { ' ' };
                             string Imp = tds[8].InnerText;
@@ -161,28 +155,7 @@ namespace PL
                             datosPortal.HoraEnvio = tds[11].InnerText.ToString();
                             datosPortal.Actualización = tds[12].InnerText.ToString();
                             datosPortal.Estatus = tds[13].InnerText.ToString();
-                            //tss.Add(datosPortal);
-                            //condiciones para que viaje entre metodos add,update,getbyid
-                            //if (datosPortal.IdFolioDeServicio == null)
-                            //{
-                            //    Console.WriteLine("No existe formato valido de folio de servicio");
-                            //}
-                            //else
-                            //{
-                            //    ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
-                            //    if (result.Correct)
-                            //    {
-                            //        BL.DatosPortal.Update(datosPortal);
-                            //        Console.WriteLine("Se modificaron los datos");
-                            //    }
-                            //    else
-                            //    {
-                            //        BL.DatosPortal.Add(datosPortal);
-                            //        Console.WriteLine("Se registraron los datos");
-                            //    }
-                            //}
-
-
+                           
                             //intento con equals
                             if (datosPortal.IdFolioDeServicio == null)
                             {
@@ -193,8 +166,9 @@ namespace PL
                                 ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
                                 if (result.Correct)
                                 {
-                                    //(object.ReferenceEquals(b, c));
-                                    if (datosPortal==result.Object)
+                                    //var IdFolio = result.Object.GetType().GetProperty("IdFolioDeServicio");
+                                    //var IdFolioDeServicio = IdFolio.GetValue(result.Object, null);
+                                    if (datosPortal== result.Object)
                                     {
                                         Console.WriteLine("No hay cambios en ningun campo");
                                     }
@@ -222,5 +196,14 @@ namespace PL
                 break;
             }
         }
+
+
+
+
+
+
+
+
+
     }
 }
