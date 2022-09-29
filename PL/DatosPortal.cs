@@ -85,7 +85,7 @@ namespace PL
 
             //guardamos el contenido del html generado en una variable tipo string
 
-            pagesrc= driver.PageSource;
+             pagesrc= driver.PageSource;
             
             //Cierra las ventanas creadas una vez que ya logramos obtener el html 
             //Libera todos los recursos 
@@ -142,6 +142,7 @@ namespace PL
 
                             ML.DatosPortal datosPortal = new ML.DatosPortal();
 
+                            //List<object> tss = new List<object>().ToList();
                             datosPortal.Prioridad = tds[1].InnerText.ToString();
                             datosPortal.TipoServicio = tds[2].InnerText.ToString();
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
@@ -160,6 +161,7 @@ namespace PL
                             datosPortal.HoraEnvio = tds[11].InnerText.ToString();
                             datosPortal.Actualización = tds[12].InnerText.ToString();
                             datosPortal.Estatus = tds[13].InnerText.ToString();
+                            //tss.Add(datosPortal);
                             //condiciones para que viaje entre metodos add,update,getbyid
                             //if (datosPortal.IdFolioDeServicio == null)
                             //{
@@ -191,7 +193,8 @@ namespace PL
                                 ML.Result result = BL.DatosPortal.GetById(datosPortal.IdFolioDeServicio);
                                 if (result.Correct)
                                 {
-                                    if (result.Equals(datosPortal))
+                                    //(object.ReferenceEquals(b, c));
+                                    if (datosPortal==result.Object)
                                     {
                                         Console.WriteLine("No hay cambios en ningun campo");
                                     }

@@ -21,8 +21,8 @@ namespace ML
         public string HoraEnvio { get; set; }
         public string Actualización { get; set; }
         public string Estatus { get; set; }
-        //public List<object> DatosDePortal { get; set; }
-        public string pagesrc { get; set; }
+      
+       
 
     }
 }
