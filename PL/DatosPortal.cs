@@ -19,13 +19,12 @@ namespace PL
     public class DatosPortal
     {
 
-        public class PaginaDocument
-        {
+       
             public string pagesrc { get; set; }
-        }
+        
 
 
-        public static void ExtraerDatos()
+        public void ExtraerDatos()
 
         {
             //----------->
@@ -86,18 +85,21 @@ namespace PL
 
             //guardamos el contenido del html generado en una variable tipo string
 
-            PaginaDocument pag = new PaginaDocument();
-            pag.pagesrc= driver.PageSource;
+            pagesrc= driver.PageSource;
             
             //Cierra las ventanas creadas una vez que ya logramos obtener el html 
             //Libera todos los recursos 
             driver.Quit();
             SepararDatos();
+            
+
+
+            
 
         }
 
        
-        public static void SepararDatos()
+        public void SepararDatos()
 
         {
 
@@ -105,7 +107,7 @@ namespace PL
             var doc = new HtmlDocument();
 
             //se carga el contenido de la variable pagesrc y lo convierte a htmldocument
-            doc.LoadHtml("");
+            doc.LoadHtml(pagesrc);
 
             //se encarga de encontrar dentro del documento la tabla que nos interesa 
             var myTable = doc.DocumentNode
@@ -150,6 +152,7 @@ namespace PL
                             datosPortal.SucursalConsignatario = tds[3].InnerText.ToString();
                             datosPortal.FechaCaptura = tds[4].InnerText.ToString();
                             datosPortal.FechaRealizarServicio = tds[5].InnerText.ToString();
+                            //datosPortal - src = obten(datosPortal.SucursalConsignatario);
                             datosPortal.IdFolioDeServicio = tds[6].InnerText.ToString();
                             datosPortal.OrdenServicio = tds[7].InnerText.ToString();
                             char[] chars = { ' ' };

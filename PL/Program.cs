@@ -13,27 +13,29 @@ namespace PL
 
         public static void Main(string[] args)
         {
-            
-            DatosPortal.ExtraerDatos();
+
+            DatosPortal dp = new DatosPortal();
+            dp.ExtraerDatos();
             //----->
             //comentar para poder depurar
-            Timer timer = new Timer(15000);//30000
+            //Timer timer = new Timer(15000);//30000
 
-            timer.Elapsed += EventoElapsed;
-            timer.Start();
+            //timer.Elapsed += EventoElapsed;
+            //timer.Start();
 
-            while (true) ;
+            //while (true) ;
             /////<-------
 
         }
         //----->
         //comentar para poder depurar
 
-        private static void EventoElapsed(object sender, ElapsedEventArgs e)
-        {
-            DatosPortal.ExtraerDatos();
+        //private static void EventoElapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    DatosPortal.ExtraerDatos();
+        
 
-        }
+        //}
         /////<-------
 
     }
